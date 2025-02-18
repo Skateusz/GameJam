@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
+    BoxCollider2D box;
+    public bool gameStart = false;
     Rigidbody2D rb;
     float speed = 5f;
     float dirX;
@@ -13,11 +14,16 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        box = GetComponent<BoxCollider2D>();
     }
 
     private void FixedUpdate()
     {
-        Walk();
+        if (gameStart)
+        {
+            Walk();
+            box.isTrigger = false;
+        }
     }
 
     void Walk()
