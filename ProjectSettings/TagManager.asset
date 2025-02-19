@@ -6,6 +6,8 @@ TagManager:
   tags:
   - RoomDoor
   - Canvas
+  - Komputer
+  - Pralka
   layers:
   - Default
   - TransparentFX

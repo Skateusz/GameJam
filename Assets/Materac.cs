@@ -1,44 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using TMPro;
 using UnityEngine;
 
-public class Komputer : MonoBehaviour
+public class Materac : MonoBehaviour
 {
     [SerializeField] Buttons buttons;
-    [SerializeField] Endings ending;
     [SerializeField] TMP_Text text;
     [SerializeField] GameObject EKey;
     bool inTrigger = false;
+    public bool materac = false;
 
     private void Update()
     {
-        if(inTrigger && Input.GetKeyDown(KeyCode.E))
+        if (inTrigger && Input.GetKeyDown(KeyCode.E))
         {
             EKey.SetActive(false);
-            ending.Ending_0 = true;
+            materac = true;
+            gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && buttons.wybor_01)
+        if (other.CompareTag("Player"))
         {
             EKey.SetActive(true);
-            text.text = "Moge przegrac caly wolny czas na kompie";
+            text.text = "Musze go wziac";
             inTrigger = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && buttons.wybor_01)
+        if (other.CompareTag("Player"))
         {
             EKey.SetActive(false);
             text.text = "";
             inTrigger = false;
         }
     }
-
 }

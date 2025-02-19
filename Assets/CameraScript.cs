@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class CameraScript : MonoBehaviour
 {
-    [SerializeField] GameObject Player;
+    [SerializeField] Player player;
+    bool one = false;
 
+    private void Update()
+    {
+        if (player.gameStart)
+        {
+            if (!one)
+            {
+                gameObject.transform.position = new Vector3(-10.9f, 2.46f, -10);
+                one = true;
+            }
+            gameObject.transform.SetParent(player.transform);
+        }
+    }
 
-    //private void Update()
-    //{
-    //    transform.position = new Vector3(Player.transform.position.x, Player.transform.position.y, -9);
-    //}
 }

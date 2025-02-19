@@ -20,7 +20,7 @@ public class WyboryTekst : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(dialogi.i);
+        Debug.Log("Kliknieto" + buttons.kliknieto);
         Klik();
         Klikniecie();
         Funkcja();
@@ -38,7 +38,7 @@ public class WyboryTekst : MonoBehaviour
 
     void Klikniecie()
     {
-        if(Input.GetMouseButtonDown(0) && dialogi.i < dialogi.dialog_0.Count)
+        if(Input.GetMouseButtonDown(0) && dialogi.i < dialogi.dialog_0.Count - 1)
         {
             if(dialogi.i != 1) dialogi.i++;
             text.text = dialogi.dialog_0[dialogi.i];
@@ -53,6 +53,13 @@ public class WyboryTekst : MonoBehaviour
             button_0.text = "Idz sie odlac";
             button1.gameObject.SetActive(true);
             button_1.text = "Nie idz";
+        }
+        if(buttons.i == 1)
+        {
+            button0.gameObject.SetActive(true);
+            button_0.text = "Zagroz";
+            button1.gameObject.SetActive(true);
+            button_1.text = "Daj kompa";
         }
     }
 

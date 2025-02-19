@@ -10,11 +10,13 @@ public class Buttons : MonoBehaviour
     [SerializeField] Player player;
     [SerializeField] Dialogi dialogi;
     [SerializeField] GameObject[] obiekty;
-    public bool wybor_0 = false; 
-    public bool wybor_1 = false; 
-    public bool wybor_2 = false; 
+    public bool wybor_0; 
+    public bool wybor_1; 
+    public bool wybor_01 = true; //Dla wybor_1
+    public bool wybor_2; 
     public bool kliknieto = false;
-    int i = 0;
+    public bool nieOdlanoSie = false;
+    public int i = 0;
 
     public void StartButton()
     {
@@ -35,11 +37,20 @@ public class Buttons : MonoBehaviour
     {
         if (i == 0) //Wybor 1
         {
-            player.gameStart = true;
             kliknieto = true;
             text.text = "Poszedles sie odlac potwory nie istnieja";
+            player.gameStart = true;
+            nieOdlanoSie = true;    
             wybor_0 = false;
             dialogi.i++;
+        }
+        if(i == 1)
+        {
+            player.gameStart = true;
+            kliknieto = true;
+            text.text = "Zagroziles bratu ten nic nie powie dopuki nie przyjda rodzice";
+            wybor_01 = false;
+            wybor_1 = false;
             i++;
         }
     }
@@ -48,12 +59,18 @@ public class Buttons : MonoBehaviour
     {
         if (i == 0) //Wybor 1
         {
-            player.gameStart = true;
             kliknieto = true;
             text.text = "Nie poszedles, rano obudziles sie z zaszczanym materacem, potwory nie istnieja debilu";
             obiekty[0].SetActive(true);
             wybor_0 = true;
             dialogi.i++;
+        }
+        if (i == 1)
+        {
+            player.gameStart = true;
+            kliknieto = true;
+            text.text = "Dales bratu kompa, nie wysprzegli sie";
+            wybor_1 = true;
             i++;
         }
     }

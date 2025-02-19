@@ -10,6 +10,7 @@ public class Endings : MonoBehaviour
     [SerializeField] TMP_Text text;
     [SerializeField] Button restart;
     public bool Ending_0 = false;
+    public bool Ending_1 = false;
 
     private void Update()
     {
@@ -17,6 +18,11 @@ public class Endings : MonoBehaviour
         {
             cam.gameObject.transform.position = new Vector3(39.4f, 11.07f, -9);
             text.text = "Grales caly dzien rodzice zostawili ci liste rzeczy do zrobienia o ktorej nie wiedziales mimo to rodzice sa zli masz KARE";
+        }
+        if (Ending_1) 
+        {
+            cam.gameObject.transform.position = new Vector3(39.4f, 11.07f, -9);
+            text.text = "Jestes debilem pierzesz materac w pralce przez co sie niszczy masz KARE";
         }
     }
 
