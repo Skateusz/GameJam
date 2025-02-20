@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
+    [SerializeField] SzafkaRodzicow szafka;
     [SerializeField] TMP_Text text;
     [SerializeField] Player player;
     [SerializeField] Dialogi dialogi;
@@ -39,6 +40,7 @@ public class Buttons : MonoBehaviour
         {
             kliknieto = true;
             text.text = "Poszedles sie odlac potwory nie istnieja";
+            obiekty[1].SetActive(true);
             player.gameStart = true;
             nieOdlanoSie = true;    
             wybor_0 = false;
@@ -51,6 +53,15 @@ public class Buttons : MonoBehaviour
             text.text = "Zagroziles bratu ten nic nie powie dopuki nie przyjda rodzice";
             wybor_01 = false;
             wybor_1 = false;
+            i++;
+        }
+        if (i == 3)
+        {
+            kliknieto = true;
+            text.text = "Wzioles bron ze soba";
+            obiekty[1].SetActive(false);
+            wybor_2 = true;
+            szafka.i = 1;
             i++;
         }
     }
@@ -71,6 +82,15 @@ public class Buttons : MonoBehaviour
             kliknieto = true;
             text.text = "Dales bratu kompa, nie wysprzegli sie";
             wybor_1 = true;
+            wybor_01 = false;
+            i++;
+        }
+        if (i == 3)
+        {
+            kliknieto = true;
+            text.text = "Zostawiles bron w szafce";
+            wybor_2 = false;
+            szafka.i = 1;
             i++;
         }
     }

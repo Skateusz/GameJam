@@ -1,11 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraScript : MonoBehaviour
 {
+    Camera cam;
     [SerializeField] Player player;
     bool one = false;
+
+    private void Awake()
+    {
+        cam = GetComponent<Camera>();
+    }
 
     private void Update()
     {

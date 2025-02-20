@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Dialogi : MonoBehaviour
 {
-
+    [SerializeField] WyboryTekst tekst;
     [SerializeField] Buttons buttons;
     [SerializeField] TMP_Text text;
     public List<string> dialog_0 = new List<string>();

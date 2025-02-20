@@ -8,6 +8,7 @@ TagManager:
   - Canvas
   - Komputer
   - Pralka
+  - Lista
   layers:
   - Default
   - TransparentFX

@@ -13,6 +13,7 @@ public class WyboryTekst : MonoBehaviour
     [SerializeField] Button button1;
     [SerializeField] TMP_Text button_0;
     [SerializeField] TMP_Text button_1;
+    public bool mozna = false;
     private void Start()
     {
         text.text = dialogi.dialog_0[0];
@@ -60,6 +61,13 @@ public class WyboryTekst : MonoBehaviour
             button_0.text = "Zagroz";
             button1.gameObject.SetActive(true);
             button_1.text = "Daj kompa";
+        }
+        if (buttons.i == 3)
+        {
+            button0.gameObject.SetActive(true);
+            button_0.text = "Wez";
+            button1.gameObject.SetActive(true);
+            button_1.text = "Zostaw";
         }
     }
 
