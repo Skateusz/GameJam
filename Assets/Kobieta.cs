@@ -3,33 +3,30 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Kasjer : MonoBehaviour
+public class Kobieta : MonoBehaviour
 {
-    [SerializeField] PulkaSklepowaScript pulka;
-    [SerializeField] GameObject EKey;
-    [SerializeField] GameObject player;
-    [SerializeField] Buttons buttons;
+
     [SerializeField] TMP_Text text;
+    [SerializeField] Buttons buttons;
+    [SerializeField] GameObject EKey;
     bool inTrigger = false;
-    public bool zaplacono = false;
 
     private void Update()
     {
         if (inTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            zaplacono = true;
             EKey.SetActive(false);
-            text.text = "Zaplacono za produkt";
+            buttons.i = 9;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player") && !zaplacono) 
+        if (collision.collider.CompareTag("Player"))
         {
             EKey.SetActive(true);
+            text.text = "Chcesz wyprac materac?";
             inTrigger = true;
-            text.text = "Zaplacic za zakupy?";
         }
     }
 
@@ -38,8 +35,8 @@ public class Kasjer : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             EKey.SetActive(false);
-            inTrigger = false;
             text.text = "";
+            inTrigger = false;
         }
     }
 

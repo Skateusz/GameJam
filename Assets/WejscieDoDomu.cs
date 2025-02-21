@@ -1,35 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
-public class Kasjer : MonoBehaviour
+public class WejscieDoDomu : MonoBehaviour
 {
-    [SerializeField] PulkaSklepowaScript pulka;
-    [SerializeField] GameObject EKey;
-    [SerializeField] GameObject player;
+
+    [SerializeField] Camera cam;
+    [SerializeField] Endings endings;
     [SerializeField] Buttons buttons;
-    [SerializeField] TMP_Text text;
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject EKey;
     bool inTrigger = false;
-    public bool zaplacono = false;
 
     private void Update()
     {
-        if (inTrigger && Input.GetKeyDown(KeyCode.E))
+        if(inTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            zaplacono = true;
-            EKey.SetActive(false);
-            text.text = "Zaplacono za produkt";
+            player.transform.position = new Vector2(-18.7f, -12.63f);
+            cam.backgroundColor = Color.gray;
+        }
+        if (inTrigger && Input.GetKeyDown(KeyCode.E) && buttons.wybor_03)
+        {
+            endings.Ending_4 = true;   
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player") && !zaplacono) 
+        if (collision.collider.CompareTag("Player"))
         {
             EKey.SetActive(true);
             inTrigger = true;
-            text.text = "Zaplacic za zakupy?";
         }
     }
 
@@ -39,7 +40,6 @@ public class Kasjer : MonoBehaviour
         {
             EKey.SetActive(false);
             inTrigger = false;
-            text.text = "";
         }
     }
 

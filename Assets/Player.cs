@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] Menel menel;
     BoxCollider2D box;
     public bool gameStart = false;
     Rigidbody2D rb;
@@ -19,7 +20,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (gameStart)
+        if (gameStart && !menel.threeFreeze)
         {
             Walk();
             box.isTrigger = false;

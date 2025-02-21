@@ -14,6 +14,7 @@ public class WyboryTekst : MonoBehaviour
     [SerializeField] TMP_Text button_0;
     [SerializeField] TMP_Text button_1;
     public bool mozna = false;
+    bool one = false;
     private void Start()
     {
         text.text = dialogi.dialog_0[0];
@@ -25,6 +26,11 @@ public class WyboryTekst : MonoBehaviour
         Klik();
         Klikniecie();
         Funkcja();
+        if(!one && buttons.i == 7)
+        {
+            one = true;
+            text.text = "Niepokoi cie to ze twoj tata ma bron w domu";
+        }
     }
 
     void Klik()
@@ -68,6 +74,27 @@ public class WyboryTekst : MonoBehaviour
             button_0.text = "Wez";
             button1.gameObject.SetActive(true);
             button_1.text = "Zostaw";
+        }
+        if (buttons.i == 5)
+        {
+            button0.gameObject.SetActive(true);
+            button_0.text = "Daj jedzenie";
+            button1.gameObject.SetActive(true);
+            button_1.text = "Nie dawaj nic";
+        }
+        if (buttons.i == 7)
+        {
+            button0.gameObject.SetActive(true);
+            button_0.text = "Dzwon na policje";
+            button1.gameObject.SetActive(true);
+            button_1.text = "Nic nie rob";
+        }
+        if (buttons.i == 9)
+        {
+            button0.gameObject.SetActive(true);
+            button_0.text = "Powiedz Prawde";
+            button1.gameObject.SetActive(true);
+            button_1.text = "Wypierz";
         }
     }
 
