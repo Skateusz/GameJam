@@ -23,7 +23,8 @@ public class CameraScript : MonoBehaviour
                 gameObject.transform.position = new Vector3(-10.9f, 2.46f, -10);
                 one = true;
             }
-            gameObject.transform.SetParent(player.transform);
+            //gameObject.transform.SetParent(player.transform);
+            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -9);
         }
     }
 

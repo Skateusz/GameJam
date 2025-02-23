@@ -19,17 +19,19 @@ public class Kasjer : MonoBehaviour
         {
             zaplacono = true;
             EKey.SetActive(false);
-            text.text = "Zaplacono za produkt";
+            if (buttons.polski) text.text = "Zaplacono za produkt";
+            if (buttons.angielski) text.text = "Paid for product";
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player") && !zaplacono) 
+        if (collision.collider.CompareTag("Player") && pulka.wzietoProduct && !zaplacono) 
         {
             EKey.SetActive(true);
             inTrigger = true;
-            text.text = "Zaplacic za zakupy?";
+            if (buttons.polski) text.text = "Zaplacic za zakupy?";
+            if (buttons.angielski) text.text = "Pay for your shopping?";
         }
     }
 

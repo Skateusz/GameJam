@@ -13,6 +13,7 @@ public class Wyjscie : MonoBehaviour
     [SerializeField] Buttons buttons;
     [SerializeField] TMP_Text text;
     [SerializeField] GameObject EKey;
+    [SerializeField] GameObject materacGO;
     bool inTrigger = false;
     public int i = 0;
 
@@ -21,7 +22,8 @@ public class Wyjscie : MonoBehaviour
         if (inTrigger && Input.GetKeyDown(KeyCode.E))
         {
             EKey.SetActive(false);
-            gameObject.SetActive(false);
+            i = 0;
+            //gameObject.SetActive(false);
             if(i == 0)
             {
                 i = 1;
@@ -33,17 +35,18 @@ public class Wyjscie : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player") && lista.activeSelf)
+        if (collision.collider.CompareTag("Player") && (lista.activeSelf || (buttons.wybor_0) && !materacGO.activeSelf))
         {
             EKey.SetActive(true);
-            text.text = "Wyjsc na zewnatrz?";
+            if (buttons.polski) text.text = "Wyjsc na zewnatrz?";
+            if (buttons.angielski) text.text = "Go outside?";
             inTrigger = true;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player") && lista.activeSelf)
+        if (collision.collider.CompareTag("Player") && (lista.activeSelf || (buttons.wybor_0) && !materacGO.activeSelf))
         {
             EKey.SetActive(false);
             text.text = "";

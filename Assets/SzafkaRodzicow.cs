@@ -20,7 +20,8 @@ public class SzafkaRodzicow : MonoBehaviour
             EKey.SetActive(false);
             if (i == 0)
             {
-                text.text = "Znalazles pistolet";
+                if (buttons.polski) text.text = "Znalazles pistolet";
+                if (buttons.angielski) text.text = "You found a gun";
                 buttons.i = 3;
             }
             if (i == 1) text.text = "";
@@ -32,7 +33,8 @@ public class SzafkaRodzicow : MonoBehaviour
         if (other.CompareTag("Player") && i == 0 && !buttons.wybor_0 && lista.activeSelf)
         {
             EKey.SetActive(true);
-            text.text = "Przeszukac?";
+            if (buttons.polski) text.text = "Przeszukac?";
+            if (buttons.angielski) text.text = "Search?";
             inTrigger = true;
         }
     }

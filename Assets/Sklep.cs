@@ -22,17 +22,18 @@ public class Sklep : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && !buttons.wybor_0)
         {
             EKey.SetActive(true);
             inTrigger = true;
-            text.text = "Moge wejsc do sklepu";
+            if (buttons.polski) text.text = "Moge wejsc do sklepu";
+            if (buttons.angielski) text.text = "I can go to shop";
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && !buttons.wybor_0)
         {
             EKey.SetActive(false);
             inTrigger = false;

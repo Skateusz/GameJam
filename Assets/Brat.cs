@@ -31,8 +31,7 @@ public class Brat : MonoBehaviour //Brat prawie skonczony
 
     private void Update()
     {
-        Debug.Log("Wybor_1" + buttons.wybor_1);
-        if (materac.activeSelf && dialogi.i == 3)
+        if (materac.activeSelf && dialogi.i == 2)
         {
             arriveBrother = true;
         }
@@ -80,11 +79,20 @@ public class Brat : MonoBehaviour //Brat prawie skonczony
                 i++;
             }
         }
-        if (i == 0) text.text = "Hahaha zaszczales materac";
-        if (i == 1) text.text = "Powiem to rodzicom";
+        if (i == 0)
+        {
+            if (buttons.polski) text.text = "Hahaha zaszczales materac";
+            if (buttons.angielski) text.text = "Hahaha you the mattress";
+        }
+        if (i == 1)
+        {
+            if (buttons.polski) text.text = "Powiem to rodzicom";
+            if (buttons.angielski) text.text = "I'll tell my parents";
+        }
         if (i == 2)
         {
-            text.text = "Szczerze mowiac jestes w dupie musisz cos zrobic";
+            if (buttons.polski) text.text = "Szczerze mowiac jestes w dupie musisz cos zrobic";
+            if (buttons.angielski) text.text = "Honestly, you don't give a shit, you have to do something";
             buttons.i = 1;
         }
     }
@@ -152,7 +160,11 @@ public class Brat : MonoBehaviour //Brat prawie skonczony
                 j++;
             }
         }
-        if (j == 0) text.text = "Musze wyprac materac";
+        if (j == 0)
+        {
+            if (buttons.polski) text.text = "Musze wyprac materac";
+            if (buttons.angielski) text.text = "I need to wash the mattress";
+        }
         if (j == 1)
         {
             text.text = "";

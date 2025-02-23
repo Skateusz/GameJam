@@ -21,7 +21,8 @@ public class PulkaSklepowaScript : MonoBehaviour
             EKey.SetActive(false);
             wzietoProduct = true;
             one = false;
-            text.text = "Wzieto produkt";
+            if (buttons.polski) text.text = "Wzieto produkt";
+            if (buttons.angielski) text.text = "The product was taken";
         }
     }
 
@@ -31,7 +32,8 @@ public class PulkaSklepowaScript : MonoBehaviour
         {
             EKey.SetActive(true);
             inTrigger = true;
-            text.text = "Wziac produkt z pulki???";
+            if (buttons.polski) text.text = "Wziac produkt z pulki???";
+            if (buttons.angielski) text.text = "Take a productfrom the shellf???";
         }
     }
 

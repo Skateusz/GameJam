@@ -1,36 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class WejscieDoDomu : MonoBehaviour
+public class Kanapa : MonoBehaviour
 {
-
-    [SerializeField] Camera cam;
-    [SerializeField] Endings endings;
     [SerializeField] Buttons buttons;
-    [SerializeField] GameObject player;
+    [SerializeField] Zadania zadania;
+    [SerializeField] TMP_Text text;
     [SerializeField] GameObject EKey;
+    [SerializeField] Endings endings;
     bool inTrigger = false;
 
     private void Update()
     {
-        if(inTrigger && Input.GetKeyDown(KeyCode.E))
+        if (inTrigger && Input.GetKeyDown(KeyCode.E))
         {
-            player.transform.position = new Vector2(-18.7f, -11.63f);
-            cam.backgroundColor = Color.gray;
-        }
-        if (inTrigger && Input.GetKeyDown(KeyCode.E) && buttons.wybor_03)
-        {
-            endings.Ending_4 = true;   
+            EKey.SetActive(false);
+            endings.Ending_8 = true;
         }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && zadania.wykonano)
         {
+            if (buttons.polski) text.text = "Opierdzielac sie?";
+            if (buttons.angielski) text.text = "Rest?";
             EKey.SetActive(true);
             inTrigger = true;
+            zadania.one_0 = false;
         }
     }
 
@@ -38,6 +37,7 @@ public class WejscieDoDomu : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            text.text = "";
             EKey.SetActive(false);
             inTrigger = false;
         }

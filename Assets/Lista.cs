@@ -27,7 +27,8 @@ public class Lista : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             EKey.SetActive(true);
-            text.text = "Jakas lista zadan pewnie od mamy czy mam je zrobic?";
+            if (buttons.polski) text.text = "Jakas lista zadan pewnie od mamy czy mam je zrobic?";
+            if (buttons.angielski) text.text = "A list of tasks, -- probably from mum, should I do them?";
             inTrigger = true;
         }
     }

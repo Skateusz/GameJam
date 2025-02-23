@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pralnia : MonoBehaviour
 {
 
+    [SerializeField] Buttons buttons;
     [SerializeField] GameObject player;
     [SerializeField] GameObject EKey;
     bool inTrigger = false;
@@ -20,7 +21,7 @@ public class Pralnia : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && buttons.wybor_0)
         {
             EKey.SetActive(true);
             inTrigger = true;
@@ -29,7 +30,7 @@ public class Pralnia : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && buttons.wybor_0)
         {
             EKey.SetActive(false);
             inTrigger = false;
